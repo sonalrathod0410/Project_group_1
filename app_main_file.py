@@ -1,7 +1,15 @@
 from flask import Flask , render_template
 import sqlite3
+from pathlib import Path
+import os
 
-app = Flask(__name__)
+base_path = Path().cwd()
+db_name = "Health_database.db"
+db_path = base_path / db_name
+my_path= os.path.join(os.path.dirname(__file__), db_name)
+print(my_path)
+app = Flask(__name__, static_url_path='/static')
+
 
 @app.route("/")
 def home():
@@ -10,7 +18,7 @@ def home():
 @app.route('/data')
 def display_data():
     
-    conn = sqlite3.connect('Health_database.db')
+    conn = sqlite3.connect(my_path)
     cursor = conn.cursor()   
     cursor.execute("SELECT * FROM sleep_cycle LIMIT 15")
     data = cursor.fetchall()   
