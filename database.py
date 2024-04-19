@@ -5,6 +5,8 @@ def create_database(database_name):
     conn = sqlite3.connect(database_name)
     conn.close
 
+create_database('Health_database.db')
+
 def create_table():
    
     conn = sqlite3.connect('Health_database.db')    
@@ -25,10 +27,12 @@ def create_table():
     conn.commit() 
     conn.close()
 
+create_table()
+
 def data_from_csv(table_name,filename): 
     conn = sqlite3.connect('Health_database.db')
     cur = conn.cursor()
-        
+
     with open(filename, 'r') as file:
         data = csv.reader(file)
         next(data)
@@ -40,3 +44,4 @@ def data_from_csv(table_name,filename):
         print("Data loaded successfully.")
         conn.close()
 
+data_from_csv('sleep_cycle', 'Sleep_health_and_lifestyle_dataset.csv')

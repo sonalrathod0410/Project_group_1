@@ -1,11 +1,7 @@
 from flask import Flask , render_template
-from database import *
+import sqlite3
 
 app = Flask(__name__)
-
-create_database('Health_database.db')
-create_table()
-data_from_csv('sleep_cycle', 'Sleep_health_and_lifestyle_dataset.csv')
 
 @app.route("/")
 def home():
