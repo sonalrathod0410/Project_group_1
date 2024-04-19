@@ -4,7 +4,6 @@ from database import *
 app = Flask(__name__)
 
 create_database('Health_database.db')
-#create_table('sleep_cycle','Person_ID INTEGER PRIMARY KEY, Gender TEXT , Age INTEGER,Occupation TEXT, Sleep_Duration DECIMAL, Quality_of_Sleep INTEGER, Physical_Activity_level INTEGER, Stress_Level INTEGER, BMI_Category TEXT,Blood_Pressure INTEGER, Heart_Rate INTEGER, Daily_Steps INTEGER, Sleep_Disorder TEXT')
 create_table()
 data_from_csv('sleep_cycle', 'Sleep_health_and_lifestyle_dataset.csv')
 

@@ -8,8 +8,7 @@ def create_database(database_name):
 def create_table():
    
     conn = sqlite3.connect('Health_database.db')    
-    cur = conn.cursor() 
-    #cur.execute(f"CREATE TABLE IF NOT EXISTS {table_name}({columns});")   
+    cur = conn.cursor()   
     cur.execute('''CREATE TABLE IF NOT EXISTS sleep_cycle
                 (Person_ID INTEGER PRIMARY KEY AUTOINCREMENT, 
                 Gender TEXT ,
@@ -29,14 +28,7 @@ def create_table():
 def data_from_csv(table_name,filename): 
     conn = sqlite3.connect('Health_database.db')
     cur = conn.cursor()
-    #cur.execute("SELECT COUNT(*) FROM sleep_cycle")
-    #count = cur.fetchone()[0]
-
-
-    #if count > 0:
-    #    print("Data has already been loaded.")
-    #    return
-    
+        
     with open(filename, 'r') as file:
         data = csv.reader(file)
         next(data)
